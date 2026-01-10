@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@1,500&display=swap');
+
+nav{
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: large;
+}

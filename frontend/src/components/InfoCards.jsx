@@ -5,9 +5,9 @@ import save from "../assets/images/doodles/save.png";
 
 export default function InfoCards() {
   return (
-    <div className="flex flex-wrap justify-center items-center space-x-4 mb-10">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10 px-4">
       {/* card1 */}
-      <div className="bg-white rounded-md shadow-md overflow-hidden p-4 max-w-sm items-center justify-center ">
+      <div className="bg-gray-200 rounded-md shadow-lg overflow-hidden p-6 flex flex-col items-center justify-between w-full h-full">
         <img className="w-[200px] " src={globally} alt="Info card image" />
         <div className="px-6 ">
           <h2 className="text-2xl leading-tight text-gray-900 text-center">
@@ -21,7 +21,7 @@ export default function InfoCards() {
       </div>
 
       {/* card2 */}
-      <div className="bg-white rounded-md shadow-md overflow-hidden p-4 max-w-sm items-center justify-center ">
+      <div className="bg-gray-200 rounded-md shadow-lg overflow-hidden p-6 flex flex-col items-center justify-between w-full h-full">
         <img className="w-[200px] mb-8" src={bills} alt="Info card image " />
         <div className="px-6 ">
           <h2 className="text-2xl leading-tight text-gray-900 text-center">
@@ -35,7 +35,7 @@ export default function InfoCards() {
       </div>
 
       {/* card3 */}
-      <div className="bg-white rounded-md shadow-md overflow-hidden p-4 max-w-sm items-center justify-center ">
+      <div className="bg-gray-200 rounded-md shadow-lg  overflow-hidden p-6 flex flex-col items-center justify-between w-full h-full">
         <img className="w-[200px] mb-8" src={save} alt="Info card image " />
         <div className="px-6 ">
           <h2 className="text-2xl leading-tight text-gray-900 text-center">

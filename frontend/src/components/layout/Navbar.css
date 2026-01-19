@@ -1,8 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@1,500&display=swap');
-
 nav{
-    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-style: italic;
     font-size: large;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Slide out to the right */
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+
+
+/* Apply animations */
+.drawer.open {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+.drawer.close {
+  animation: slideOut 0.3s ease-in forwards;
 }

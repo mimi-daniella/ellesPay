@@ -5,6 +5,7 @@ import Home from './pages/public/Home'
 import SignUp from './pages/public/SignUp'
 import Login from './pages/public/Login'
 import Dashboard from './pages/public/Dashboard'
+import EmailOTP from './pages/public/EmailOTP'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/register" element={<SignUp/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/dashboard" element={<Dashboard/>} />
+        <Route path="/email-otp" element={<EmailOTP/>} ></Route>
       </Routes>
     </BrowserRouter>
   )

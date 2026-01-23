@@ -9,9 +9,17 @@ export const registerSchema = Joi.object({
     .min(8)
     .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
     .required(),
+  phoneNumber: Joi.string()
+    .pattern(/^[0-9]{10,15}$/)
+    .required(),
+  dateOfBirth: Joi.date(),
+  city: Joi.string(),
+  gender: Joi.string().valid("male", "female", "other"),
 });
 
 export const loginSchema = Joi.object({
-    email: Joi.string().email({ minDomainSegments: 2 , tlds: { allow: ["com", "net", "org"] }}).required(),
-    password: Joi.string().required()
-})
+  email: Joi.string()
+    .email({ minDomainSegments: 2, tlds: { allow: ["com", "net", "org"] } })
+    .required(),
+  password: Joi.string().required(),
+});

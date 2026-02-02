@@ -37,26 +37,26 @@ export default function Navbar() {
         <Link
           to="/"
           className="hover:border-b-2 hover:border-[var(--color-brown)] transition-transform duration-300 ease-in hover:-translate-y-1 "
-          href="/"
+          
         >
           Home
         </Link>
         <Link
-          to=""
+          to={"/services"}
           className="hover:border-b-2 hover:border-[var(--color-brown)] transition-transform duration-300 ease-in hover:-translate-y-1"
-          href="/services"
+          
         >
           Services
         </Link>
         <Link
           className="hover:border-b-2  hover:border-[var(--color-brown)] transition-transform duration-300 ease-in hover:-translate-y-1"
-          href="/contact"
+          to={"/contact"}
         >
           Contact
         </Link>
         <Link
           className="hover:border-b-2  hover:border-[var(--color-brown)] transition-transform duration-300 ease-in hover:-translate-y-1"
-          href="/about-us"
+          to={"/about"}
         >
           About us
         </Link>
@@ -72,7 +72,7 @@ export default function Navbar() {
         <Link
           to="/register"
           className="rounded-md border-1 p-3 bg-[var(--color-blue-dark)] transition-transform duration-300 ease-in-out  hover:-translate-y-1 hover:shadow-lg hover:bg-[var(--color-blue-light)]"
-          href="/register"
+          
         >
           Get Started
         </Link>
@@ -109,13 +109,13 @@ export default function Navbar() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 stroke="#000000"
-                stroke-width="1.008"
+                strokeWidth="1.008"
               >
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                 <g
                   id="SVGRepo_tracerCarrier"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 ></g>
                 <g id="SVGRepo_iconCarrier">
                   {" "}
@@ -139,13 +139,13 @@ export default function Navbar() {
             <Link to="/" className="text-2xl mb-10">
               Home
             </Link>
-            <Link to="/services" className="text-2xl mb-10">
+            <Link to={"/services"} className="text-2xl mb-10">
               Services
             </Link>
             <Link to="/contact" className="text-2xl mb-10">
               Contact
             </Link>
-            <Link to="/about_us" className="text-2xl mb-10">
+            <Link to="/about" className="text-2xl mb-10">
               About us
             </Link>
             <Link to="/dashboard" className="text-2xl mb-10">

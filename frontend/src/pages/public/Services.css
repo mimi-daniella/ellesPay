@@ -1,0 +1,10 @@
+.service-reverse{
+flex-direction: row-reverse;
+}  
+
+@media (max-width: 768px){
+    .service,
+    .service-reverse{
+        flex-direction: column;
+    }
+}

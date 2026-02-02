@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Logo from "../../assets/images/ellesPay_logos/logoE.png"
+import mainLogo from "../../assets/images/ellesPay_logos/mainLogo.png"
 
 export default function Footer() {
   return (
@@ -14,7 +14,7 @@ export default function Footer() {
                   <div className="flex items-center space-x-2 text-2xl font-medium">
                     <span>
                       <img
-                        src={Logo}
+                        src={mainLogo}
                         alt="Logo"
                         width="64"
                         height="64"
@@ -224,7 +224,7 @@ export default function Footer() {
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
-                  stroke-width="0"
+                  strokeWidth="0"
                   viewBox="0 0 512 512"
                   height="1em"
                   width="1em"
@@ -239,7 +239,7 @@ export default function Footer() {
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
-                  stroke-width="0"
+                  strokeWidth="0"
                   viewBox="0 0 24 24"
                   height="1em"
                   width="1em"
@@ -255,7 +255,7 @@ export default function Footer() {
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
-                  stroke-width="0"
+                  strokeWidth="0"
                   viewBox="0 0 448 512"
                   height="1em"
                   width="1em"
@@ -270,7 +270,7 @@ export default function Footer() {
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
-                  stroke-width="0"
+                  strokeWidth="0"
                   viewBox="0 0 512 512"
                   height="1em"
                   width="1em"
@@ -285,7 +285,7 @@ export default function Footer() {
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
-                  stroke-width="0"
+                  strokeWidth="0"
                   viewBox="0 0 512 512"
                   height="1em"
                   width="1em"
@@ -301,7 +301,7 @@ export default function Footer() {
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
-                  stroke-width="0"
+                  strokeWidth="0"
                   viewBox="0 0 448 512"
                   height="1em"
                   width="1em"
@@ -316,7 +316,7 @@ export default function Footer() {
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
-                  stroke-width="0"
+                  strokeWidth="0"
                   viewBox="0 0 512 512"
                   height="1em"
                   width="1em"
@@ -331,7 +331,7 @@ export default function Footer() {
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
-                  stroke-width="0"
+                  strokeWidth="0"
                   viewBox="0 0 24 24"
                   height="1em"
                   width="1em"

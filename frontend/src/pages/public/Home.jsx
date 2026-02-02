@@ -4,11 +4,15 @@ import Footer from "../../components/layout/Footer";
 import "./Home.css";
 import handCard from "../../assets/images/ellesPay_logos/hand&Card.png";
 import InfoCards from "../../components/InfoCards";
+import Testimonials from "../../components/Testimonials";
+import BackToTopButton from "../../components/BackToTop";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
     <>
       <Navbar />
+      <BackToTopButton/>
       <h1 className="text-6xl md:text-7xl  text-center mt-5 slogan ">
         Global Payments Simplified!
       </h1>
@@ -41,9 +45,9 @@ export default function Home() {
 
       {/* Button placed separately at the bottom */}
       <div className="flex justify-center mt-[-10px] mb-7 md:mt-[-80px] ">
-        <button className="py-4 px-6 bg-[var(--color-blue-dark)] text-center transition duration-500 ease-in-out transform hover:-translate-y-2 hover:translate-x-2 hover:scale-110">
+        <Link to="/register" className="py-4 px-6 bg-[var(--color-blue-dark)] text-center transition duration-500 ease-in-out transform hover:-translate-y-2 hover:translate-x-2 hover:scale-110 text-white cursor-pointer">
           Get Started Free
-        </button>
+        </Link>
       </div>
       <h2 className="text-5xl text-center mb-5 md:leading-[1.2]">
         ..." low rates,
@@ -53,6 +57,7 @@ export default function Home() {
         <br /> stress"
       </h2>
       <InfoCards />
+      <Testimonials/>
       <Footer />
     </>
   );

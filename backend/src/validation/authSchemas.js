@@ -1,7 +1,7 @@
 import Joi from "joi";
 
 export const registerSchema = Joi.object({
-  name: Joi.string().min(3).max(100).required(),
+  name: Joi.string().min(3).max(50),
   email: Joi.string()
     .email({ minDomainSegments: 2, tlds: { allow: ["com", "net", "org"] } })
     .required(),

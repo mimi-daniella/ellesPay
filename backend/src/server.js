@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import { connectDB } from "./config/db.js";
 import cookieParser from "cookie-parser";
 import authRoutes from "./routes/authRoutes.js";
@@ -7,11 +8,19 @@ import userRoutes from "./routes/userRoutes.js";
 
 const app = express();
 app.use(express.json());
+
+app.use(
+  cors({
+    origin: "http://localhost:5173", //frontend url
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  }),
+);
+
 dotenv.config();
 app.use(cookieParser());
 app.use("/auth", authRoutes);
 app.use("/", userRoutes);
-
 
 app.get("/health", (req, res) => {
   res.json({ status: "ok" });

@@ -2,7 +2,7 @@ import { StarIcon } from "@heroicons/react/24/solid";
 
 export default function Testimonials() {
   const testimonials = [
-    {
+    { 
       name: "Chinedu A.",
       text: "ellesPay transformed how I accept payments.",
       email: "chinedu********@gmail.com",

@@ -1,7 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
+import { toast } from "sonner"; // ✅ Sonner notifications
 import signupLady from "../../assets/images/doodles/signupLady.png";
 import HomeButton from "../../components/FloatingHomeButton";
 import PasswordField from "../../components/layout/PasswordField";
@@ -15,11 +17,13 @@ const LoginSchema = Yup.object().shape({
 });
 
 export default function Login() {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
       <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
         <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
-          <div className="mt-12 flex flex-col items-center">
+          <div className="mt- flex flex-col items-center">
             <h1 className="text-2xl xl:text-3xl font-extrabold">
               Welcome Back
             </h1>
@@ -31,9 +35,42 @@ export default function Login() {
                 <Formik
                   initialValues={{ email: "", password: "" }}
                   validationSchema={LoginSchema}
-                  onSubmit={(values) => {
-                    console.log("Login submitted:", values);
-                    // handle login logic here
+                  onSubmit={async (values, { setSubmitting }) => {
+                    try {
+                       toast.promise(
+                        axios.post("http://localhost:5000/auth/login", values),
+                        {
+                          loading: "Logging in...",
+                          success: (res) => {
+                            // check email verification
+                            if (!res.data.user.isVerified) {
+                              throw new Error(
+                                "Email not verified. Please verify email before log in.",
+                              );
+                            }
+
+                            // save token + user
+                            localStorage.setItem("token", res.data.token);
+                            localStorage.setItem(
+                              "user",
+                              JSON.stringify(res.data.user),
+                            );
+
+                            // navigate to dashboard
+                            navigate("/dashboard");
+
+                            return "Login successful! You can now access your dashboard.";
+
+                          },
+                          error: (err) =>
+                            err.response?.data?.message ||
+                            err.message ||
+                            "Login failed. Please try again.",
+                        },
+                      );
+                    } finally {
+                      setSubmitting(false);
+                    }
                   }}
                 >
                   {({ isSubmitting }) => (
@@ -78,7 +115,7 @@ export default function Login() {
                           <circle cx="8.5" cy="7" r="4" />
                           <path d="M20 8v6M23 11h-6" />
                         </svg>
-                        <span className="ml-3">Log In</span>
+                        <span className="ml-3 cursor pointer">Log In</span>
                       </button>
                     </Form>
                   )}

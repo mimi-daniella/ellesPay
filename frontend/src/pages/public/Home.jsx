@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import Navbar from "../../components/layout/NavBar";
 import Footer from "../../components/layout/Footer";
 import "./Home.css";
@@ -7,12 +8,22 @@ import InfoCards from "../../components/InfoCards";
 import Testimonials from "../../components/Testimonials";
 import BackToTopButton from "../../components/BackToTop";
 import { Link } from "react-router-dom";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 export default function Home() {
+  useEffect(() => {
+    Aos.init({
+      once: true,
+      dutration: 1000,
+    });
+  });
+
   return (
     <>
+      <BackToTopButton />
+      <div data-aos="fade-up">
       <Navbar />
-      <BackToTopButton/>
       <h1 className="text-6xl md:text-7xl  text-center mt-5 slogan ">
         Global Payments Simplified!
       </h1>
@@ -45,7 +56,10 @@ export default function Home() {
 
       {/* Button placed separately at the bottom */}
       <div className="flex justify-center mt-[-10px] mb-7 md:mt-[-80px] ">
-        <Link to="/register" className="py-4 px-6 bg-[var(--color-blue-dark)] text-center transition duration-500 ease-in-out transform hover:-translate-y-2 hover:translate-x-2 hover:scale-110 text-white cursor-pointer">
+        <Link
+          to="/register"
+          className="py-4 px-6 bg-[var(--color-blue-dark)] text-center transition duration-500 ease-in-out transform hover:-translate-y-2 hover:translate-x-2 hover:scale-110 text-white cursor-pointer"
+        >
           Get Started Free
         </Link>
       </div>
@@ -57,8 +71,9 @@ export default function Home() {
         <br /> stress"
       </h2>
       <InfoCards />
-      <Testimonials/>
+      <Testimonials />
       <Footer />
+      </div>
     </>
   );
 }

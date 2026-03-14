@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
+import { toast } from "sonner";
 
 const otpSchema = Yup.object({
   emailToken: Yup.string()
@@ -9,8 +12,12 @@ const otpSchema = Yup.object({
     .length(4, "OTP must be 4 digits"),
 });
 
-export default function EmailOTP({ email }) {
+export default function EmailOTP() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const email = location.state?.email || localStorage.getItem("userEmail");
   const [timeLeft, setTimeLeft] = useState(120);
+  const [verified, setVerified] = useState(false);
 
   // countdown timer
   useEffect(() => {
@@ -22,13 +29,11 @@ export default function EmailOTP({ email }) {
 
   return (
     <div className="bg-gray-100 flex items-center justify-center min-h-screen">
-      
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        
         <h1 className="text-2xl font-bold mb-4">Verify OTP</h1>
         <p className="mb-6">
           Enter the OTP sent to your email:
-          <span className="font-bold text-blue-600">{email}</span>
+          <span className="font-bold text-blue-600"> &nbsp; {email}</span>
         </p>
 
         {/* ✅ OTP Form */}
@@ -41,10 +46,18 @@ export default function EmailOTP({ email }) {
                 "http://localhost:5000/auth/verify-email",
                 {
                   email,
-                  token: values.emailToken,
+                  token: values.emailToken.toString().trim(),
                 },
               );
-              setStatus("Email verified successfully!");
+              setStatus(res.data.message);
+              if (res.status === 200) {
+                setVerified(true);
+                toast.success("Email verified successfully!");
+                localStorage.removeItem("userEmail");
+                setTimeout(() => {
+                  navigate("/login");
+                }, 800);
+              }
             } catch (err) {
               setStatus(err.response?.data?.message || "Verification failed");
             }
@@ -67,7 +80,7 @@ export default function EmailOTP({ email }) {
               </div>
               <button
                 type="submit"
-                className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition duration-300"
+                className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition duration-300 cursor-pointer"
               >
                 Verify OTP
               </button>
@@ -88,13 +101,23 @@ export default function EmailOTP({ email }) {
         </Formik>
 
         {/* ✅ Resend OTP */}
+        {/* ✅ Resend OTP */}
         <button
+          disabled={verified || timeLeft > 0}
           onClick={async () => {
-            await axios.post("http://localhost:5000/auth/resend-token", { email });
-            alert("OTP resent!");
-            setTimeLeft(90); // reset countdown
+            try {
+              await axios.post("http://localhost:5000/auth/resend-token", {
+                email,
+              });
+              toast.success("OTP resent successfully!");
+              setTimeLeft(120); // reset countdown
+            } catch (err) {
+              toast.error(
+                err.response?.data?.message || "Failed to resend OTP",
+              );
+            }
           }}
-          className="mt-4 w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300"
+          className="mt-4 w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Resend OTP
         </button>

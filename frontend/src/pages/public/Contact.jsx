@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import {Link } from "react-router-dom";
 import {
   PhoneIcon,
   EnvelopeIcon,
@@ -47,7 +48,9 @@ const ContactPage = () => {
         {/* Hero Section */}
         <header className="bg-gradient-to-r from-black to-gray-400 text-white py-0 px-6 text-center border-b-4 border-[var(--color-brown)]">
           <div className="flex items-center justify-center">
-            <img src={Logo} alt="logo" className="w-15 md:w-20 mr-auto" />
+            <Link to="/">
+              <img src={Logo} alt="logo" className="w-15 md:w-20 mr-auto" />
+            </Link>
             <h1 className="text-2xl md:text-5xl font-extrabold tracking-tight">
               ellesPay Concierge
             </h1>

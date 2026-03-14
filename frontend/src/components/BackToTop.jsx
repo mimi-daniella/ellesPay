@@ -31,7 +31,7 @@ export default function BackToTopButton() {
       title="Go To Top"
       className={`${
         isVisible ? "block" : "hidden"
-      } fixed z-50 bottom-10 right-10 p-4 border-0 w-14 h-14 rounded-full shadow-md bg-gradient-to-r from-[var(--color-blue-light)] to-[var(--color-brown)]  hover:bg-purple-700 text-white text-lg font-semibold transition-colors duration-300`}
+      } fixed z-50 cursor-pointer bottom-10 right-10 p-4 border-0 w-14 h-14 rounded-full shadow-md bg-gradient-to-r from-[var(--color-blue-light)] to-[var(--color-brown)]  hover:bg-purple-700 text-white text-lg font-semibold transition-colors duration-300`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
